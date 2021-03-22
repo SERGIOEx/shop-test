@@ -5,7 +5,9 @@ namespace Modules\Catalog\Data\Services;
 
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Collection;
+use Modules\Catalog\Data\Parameters\ProductParameters;
 use Modules\Catalog\Data\Repositories\ProductRepository;
+use Prettus\Validator\Exceptions\ValidatorException;
 
 /**
  * Class ProductService
@@ -40,6 +42,17 @@ class ProductService
     {
         $withBrand ? $this->brandRel() : null;
         return $this->repository->orderBy($orderBy, $sortBy)->paginate($limit);
+    }
+
+    /**
+     * Create Product
+     * @param ProductParameters $parameters
+     * @return LengthAwarePaginator|Collection|mixed
+     * @throws ValidatorException
+     */
+    public function createProduct(ProductParameters $parameters)
+    {
+        return $this->repository->create($parameters->toArray());
     }
 
     /**
