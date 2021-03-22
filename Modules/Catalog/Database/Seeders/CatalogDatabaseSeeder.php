@@ -16,6 +16,7 @@ class CatalogDatabaseSeeder extends Seeder
     {
         Model::unguard();
 
-        // $this->call("OthersTableSeeder");
+        $this->call(BaseBrandsTableSeeder::class);
+        $this->call(BaseProductTableSeeder::class);
     }
 }
