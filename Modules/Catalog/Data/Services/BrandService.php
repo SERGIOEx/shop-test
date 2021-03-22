@@ -4,6 +4,7 @@
 namespace Modules\Catalog\Data\Services;
 
 
+use App\Core\Exceptions\CreateResourceFailedException;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Collection;
 use Modules\Catalog\Data\Repositories\BrandRepository;
@@ -33,11 +34,14 @@ class BrandService
      * Create Brand
      * @param string $name
      * @return LengthAwarePaginator|Collection|mixed
-     * @throws ValidatorException
      */
     public function createBrand(string $name)
     {
-        return $this->repository->create(['name' => $name]);
+        try {
+            return $this->repository->create(['name' => $name]);
+        } catch (\Exception $exception) {
+            throw (new CreateResourceFailedException())->debug($exception);
+        }
     }
 
 }

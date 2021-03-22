@@ -3,6 +3,7 @@
 
 namespace Modules\Catalog\Data\Services;
 
+use App\Core\Exceptions\CreateResourceFailedException;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Collection;
 use Modules\Catalog\Data\Parameters\ProductParameters;
@@ -48,11 +49,14 @@ class ProductService
      * Create Product
      * @param ProductParameters $parameters
      * @return LengthAwarePaginator|Collection|mixed
-     * @throws ValidatorException
      */
     public function createProduct(ProductParameters $parameters)
     {
-        return $this->repository->create($parameters->toArray());
+        try {
+            return $this->repository->create($parameters->toArray());
+        } catch (\Exception $exception) {
+            throw (new CreateResourceFailedException())->debug($exception);
+        }
     }
 
     /**
