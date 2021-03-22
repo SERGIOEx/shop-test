@@ -1,0 +1,23 @@
+{
+    "name": "nwidart/checkout",
+    "description": "",
+    "authors": [
+        {
+            "name": "Sergio Ex",
+            "email": "sergioexua@gmail.com"
+        }
+    ],
+    "extra": {
+        "laravel": {
+            "providers": [],
+            "aliases": {
+
+            }
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Modules\\Checkout\\": ""
+        }
+    }
+}
