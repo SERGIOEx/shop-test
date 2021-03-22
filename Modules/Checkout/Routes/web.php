@@ -12,5 +12,5 @@
 */
 
 Route::prefix('checkout')->group(function() {
-    Route::get('/', 'CheckoutController@index');
+    Route::get('/{id}', 'CheckoutController@index')->name('checkout');
 });
