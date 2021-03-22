@@ -1,4 +1,4 @@
 <?php
 
 
-Route::get('/', 'CatalogController@index');
+Route::get('/', 'CatalogController@homePage');
