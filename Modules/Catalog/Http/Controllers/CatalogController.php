@@ -5,6 +5,7 @@ namespace Modules\Catalog\Http\Controllers;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+use Modules\Catalog\Entities\Product;
 
 class CatalogController extends Controller
 {
@@ -14,7 +15,8 @@ class CatalogController extends Controller
      */
     public function index()
     {
-        return view('catalog::index');
+        $products = Product::with('brand')->get();
+        return view('catalog::list', compact('products'));
     }
 
     /**

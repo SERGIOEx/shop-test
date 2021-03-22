@@ -17,6 +17,7 @@ class BaseBrandsTableSeeder extends Seeder
     {
         $faker = Faker::create(config('app.faker_locale'));
 
+        // TODO: use factory
         for ($i = 0; $i < 10; $i++) {
             $data[] = [
                 'name' => $faker->company,

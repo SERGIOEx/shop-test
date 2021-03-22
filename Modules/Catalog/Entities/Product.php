@@ -4,6 +4,7 @@ namespace Modules\Catalog\Entities;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Product extends Model
 {
@@ -11,8 +12,12 @@ class Product extends Model
 
     protected $fillable = ['id', 'brand_id', 'name', 'price'];
 
-    protected static function newFactory()
+    /**
+     * Get Brand
+     * @return BelongsTo
+     */
+    public function brand()
     {
-        return \Modules\Catalog\Database\factories\ProductFactory::new();
+        return $this->belongsTo(Brand::class);
     }
 }

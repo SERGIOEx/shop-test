@@ -18,13 +18,14 @@ class BaseProductTableSeeder extends Seeder
     {
         $faker = Faker::create(config('app.faker_locale'));
 
+        // TODO: use factory
         for ($i = 0; $i < 10; $i++) {
             $brand = Brand::inRandomOrder()->first();
 
             $data[] = [
                 'brand_id' => $brand->id,
                 'name'     => $faker->colorName,
-                'price'    => random_int(100, 999),
+                'price'     => random_int(100, 999),
                 'created_at' => now()
             ];
         }
