@@ -3,13 +3,18 @@
 namespace Modules\Catalog\Entities;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
+/**
+ * Class Product
+ * @package Modules\Catalog\Entities
+ * @property int id
+ * @property int brand_id
+ * @property string name
+ * @property int price
+ */
 class Product extends Model
 {
-    use HasFactory;
-
     protected $fillable = ['id', 'brand_id', 'name', 'price'];
 
     /**

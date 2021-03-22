@@ -19,6 +19,10 @@ class ProductService
      */
     protected $repository;
 
+    /**
+     * ProductService constructor.
+     * @param ProductRepository $productRepository
+     */
     public function __construct(ProductRepository $productRepository)
     {
         $this->repository = $productRepository;

@@ -17,6 +17,10 @@ class BrandService
      */
     protected $repository;
 
+    /**
+     * BrandService constructor.
+     * @param BrandRepository $brandRepository
+     */
     public function __construct(BrandRepository $brandRepository)
     {
         $this->repository = $brandRepository;
