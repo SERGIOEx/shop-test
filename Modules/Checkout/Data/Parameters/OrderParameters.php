@@ -12,12 +12,16 @@ use Spatie\DataTransferObject\DataTransferObject;
  */
 class OrderParameters extends DataTransferObject
 {
+    protected $ignoreMissing = true;
+
     public $total_product_value;
 
-    public $total_shipping_value;
+    public $total_shipping_value = 300;
 
     public $client_name;
 
     public $client_address;
+
+    public $product_id;
 }
 

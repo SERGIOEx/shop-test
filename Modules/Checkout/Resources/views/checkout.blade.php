@@ -30,6 +30,7 @@
         <div class="col-md-8 order-md-1">
             <h4 class="mb-3">Billing address</h4>
             {!! Form::open(['method' => 'POST', 'route' => ['confirmCheckout']]) !!}
+            @csrf
             <div class="mb-3">
                 <div class="form-group">
                     {!! Form::label('client_name', 'Your name *', ['class' => 'control-label']) !!}
@@ -61,7 +62,7 @@
             <div class="d-block my-3">
                 <div class="custom-control custom-radio">
                     <input id="credit" name="paymentMethod" type="radio" class="custom-control-input" checked=""
-                           >
+                    >
                     <label class="custom-control-label" for="credit">Credit card</label>
                 </div>
                 <div class="custom-control custom-radio">
