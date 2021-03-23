@@ -53,8 +53,8 @@ class CheckoutController extends Controller
      */
     public function checkout(CreateOrderRequest $request)
     {
-        $product = $this->productService->findProductById($pid);
-      //  $this->orderService->createOrder(new OrderParameters($request->all()), true);
+        $product = $this->productService->findProductById((int)$request->product_id);
+        //  $this->orderService->createOrder(new OrderParameters($request->all()), true);
         return redirect()->route('home');
     }
 }
