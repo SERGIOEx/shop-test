@@ -10,6 +10,7 @@ use Illuminate\Routing\Controller;
 use Modules\Catalog\Data\Services\ProductService;
 use Modules\Checkout\Data\Parameters\OrderParameters;
 use Modules\Checkout\Data\Services\OrderService;
+use Modules\Checkout\Events\OrderWasCreated;
 use Modules\Checkout\Http\Requests\CreateOrderRequest;
 
 class CheckoutController extends Controller
@@ -58,7 +59,9 @@ class CheckoutController extends Controller
         $params = new OrderParameters($request->all());
         $params->total_product_value = $product->price;
 
-        $this->orderService->createOrder($params, true);
+        $order = $this->orderService->createOrder($params);
+
+        event(new OrderWasCreated($order));
 
         return redirect()->route('home');
     }

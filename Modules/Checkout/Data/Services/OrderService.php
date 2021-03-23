@@ -33,10 +33,9 @@ class OrderService
     /**
      * Create Order
      * @param OrderParameters $parameters
-     * @param bool $adminNotify
      * @return LengthAwarePaginator|Collection|mixed
      */
-    public function createOrder(OrderParameters $parameters, bool $adminNotify = false)
+    public function createOrder(OrderParameters $parameters)
     {
         try {
             return $this->repository->create($parameters->toArray());
