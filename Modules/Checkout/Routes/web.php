@@ -12,5 +12,6 @@
 */
 
 Route::prefix('checkout')->group(function() {
-    Route::get('/{id}', 'CheckoutController@index')->name('checkout');
+    Route::get('/{id}', 'CheckoutController@showForm')->name('checkout');
+    Route::post('/confirm', 'CheckoutController@index')->name('confirmCheckout');
 });

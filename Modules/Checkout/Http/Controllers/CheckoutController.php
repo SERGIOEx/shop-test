@@ -2,78 +2,59 @@
 
 namespace Modules\Checkout\Http\Controllers;
 
-use Illuminate\Contracts\Support\Renderable;
-use Illuminate\Http\Request;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Routing\Controller;
+use Modules\Catalog\Data\Services\ProductService;
+use Modules\Checkout\Data\Parameters\OrderParameters;
+use Modules\Checkout\Data\Services\OrderService;
+use Modules\Checkout\Http\Requests\CreateOrderRequest;
 
 class CheckoutController extends Controller
 {
     /**
-     * Display a listing of the resource.
-     * @return Renderable
+     * @var OrderService
      */
-    public function index()
+    private $orderService;
+
+    /**
+     * @var ProductService
+     */
+    private $productService;
+
+    /**
+     * CheckoutController constructor.
+     * @param OrderService $orderService
+     * @param ProductService $productService
+     */
+    public function __construct(OrderService $orderService, ProductService $productService)
     {
-        return view('checkout::index');
+        $this->orderService = $orderService;
+        $this->productService = $productService;
     }
 
     /**
-     * Show the form for creating a new resource.
-     * @return Renderable
+     * Display checkout form
+     * @param int $pid
+     * @return Application|Factory|View
      */
-    public function create()
+    public function showForm(int $pid)
     {
-        return view('checkout::create');
+        $product = $this->productService->findProductById($pid);
+        return view('checkout::checkout', compact('product'));
     }
 
     /**
-     * Store a newly created resource in storage.
-     * @param Request $request
-     * @return Renderable
+     * Create new order
+     * @param CreateOrderRequest $request
+     * @return RedirectResponse
      */
-    public function store(Request $request)
+    public function checkout(CreateOrderRequest $request)
     {
-        //
-    }
-
-    /**
-     * Show the specified resource.
-     * @param int $id
-     * @return Renderable
-     */
-    public function show($id)
-    {
-        return view('checkout::show');
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     * @param int $id
-     * @return Renderable
-     */
-    public function edit($id)
-    {
-        return view('checkout::edit');
-    }
-
-    /**
-     * Update the specified resource in storage.
-     * @param Request $request
-     * @param int $id
-     * @return Renderable
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     * @param int $id
-     * @return Renderable
-     */
-    public function destroy($id)
-    {
-        //
+        $product = $this->productService->findProductById($pid);
+      //  $this->orderService->createOrder(new OrderParameters($request->all()), true);
+        return redirect()->route('home');
     }
 }
