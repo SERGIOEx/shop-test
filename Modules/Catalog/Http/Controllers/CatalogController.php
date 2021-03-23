@@ -2,7 +2,10 @@
 
 namespace Modules\Catalog\Http\Controllers;
 
+use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\Support\Renderable;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
 use Illuminate\Routing\Controller;
 use Modules\Catalog\Data\Services\ProductService;
 

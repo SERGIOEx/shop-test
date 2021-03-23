@@ -66,4 +66,6 @@ class EloquentProductRepositoryTest extends TestCase
 
         $this->assertCount(5, $items);
     }
+
+    // TODO: add testFindProductById
 }

@@ -60,6 +60,17 @@ class ProductService
     }
 
     /**
+     * Find product by id
+     * NOTICE: if used api, need added exception block; otherwise you will get a 404 page
+     * @param int $pid
+     * @return LengthAwarePaginator|Collection|mixed
+     */
+    public function findProductById(int $pid)
+    {
+        return $this->repository->find($pid);
+    }
+
+    /**
      * Get Brands: Eager Loading
      * @return ProductRepository
      */
