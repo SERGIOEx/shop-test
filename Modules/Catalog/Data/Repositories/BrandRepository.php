@@ -11,7 +11,8 @@ use Prettus\Repository\Eloquent\BaseRepository;
  * Class BrandRepository
  * @package Modules\Catalog\Data\Repositories
  */
-class BrandRepository extends BaseRepository {
+class BrandRepository extends BaseRepository
+{
 
     /**
      * Specify Model class name
