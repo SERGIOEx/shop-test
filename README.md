@@ -23,6 +23,8 @@
 - ```Payment Module```
 - ```Admin Notify Email Text```
 - ```Shipping option```
+- ```Checkout module tests```
+- ```Payment module tests```
 
 
 ## Task
